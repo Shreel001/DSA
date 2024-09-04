@@ -2,29 +2,29 @@ package DSA.Stack;
 
 import java.util.Stack;
 
-public class Calculator {
+public class SimpleCalculator {
 
-    public static int Calculator(String str){
+    public static int Calculator(String string){
         Stack<Integer> stack = new Stack<>();
         int currentNumber = 0;
         char operation = '+';
-        str = str.replaceAll("\\s", "");
+        string = string.replaceAll("\\s", "");
 
-        for(int i = 0; i < str.length(); i++){
-            char currentChar = str.charAt(i);
+        for(int i = 0; i < string.length(); i++){
+            char currentChar = string.charAt(i);
 
             if(Character.isDigit(currentChar)){
                 currentNumber = currentNumber * 10 + (currentChar - '0');
             }
 
-            if(!Character.isDigit(currentChar) || i == str.length() - 1){
+            if(!Character.isDigit(string.charAt(i)) || i == string.length() - 1){
                 if(operation == '+'){
                     stack.push(currentNumber);
-                }else if (operation == '-') {
+                }else if(operation == '-'){
                     stack.push(-currentNumber);
-                }else if (operation == '*') {
-                    stack.push(stack.pop() * currentNumber);
-                }else if (operation == '/') {
+                }else if(operation == '*'){
+                    stack.push(stack.pop()*currentNumber);
+                }else if(operation == '/'){
                     stack.push(stack.pop()/currentNumber);
                 }
                 operation = currentChar;
@@ -33,17 +33,18 @@ public class Calculator {
         }
 
         int result = 0;
-        while(!stack.empty()){
-            result+=stack.pop();
+        while(!stack.isEmpty()){
+            result += stack.pop();
         }
 
         return result;
     }
 
+
     public static void main(String[] args) {
-        String str = "-5/5*9-6";
+        String str = "9*5/4-6";
         int result = Calculator(str);
         System.out.println(result);
+        System.out.println(9*5/4-6);
     }
-
 }
