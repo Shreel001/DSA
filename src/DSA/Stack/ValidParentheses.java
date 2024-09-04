@@ -18,7 +18,7 @@ public class ValidParentheses {
             } else if (!stack.isEmpty() && dictionary.get(stack.peek()) == currentChar){
                 stack.pop();
             } else {
-                return false; // Unbalanced parentheses
+                return false;
             }
         }
 
